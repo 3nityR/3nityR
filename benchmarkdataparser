@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 import os.path
 from re import compile, findall
 from openpyxl import Workbook
-from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl.worksheet.table import Table
 
 
 # ---------------------------------------All functions here-------------------------------------------------------
