@@ -2,7 +2,7 @@
 - 👀 I’m interested in computer science, algorithms and UIUX design!
 - 🌱 I’m currently learning engineering science and technology management!
 - 💞️ I’m looking to collaborate on linkedin!
-- 📫 How to reach me ...
+- 📫 How to reach me: www.linkedin.com/in/jialu-xu1
 
 <!---
 3nityR/3nityR is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
