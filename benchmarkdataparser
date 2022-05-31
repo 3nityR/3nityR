@@ -6,8 +6,26 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 
 # ---------------------------------------All functions here-------------------------------------------------------
+def parse_text_cinebench(input_file_path, encoding='utf8'):
+    # Regex expressions for different patterns in cinebench:
+    cinebench_type_pattern = compile(r'Single|Multiple')
+    cinebench_score_pattern = compile(r'CB (\d*.\d*)')
+    cinebench_version_pattern = compile(r'R20|R23')
 
-def parse_text(input_file_path, encoding='utf16'):
+    with open(input_file_path, "r", encoding=encoding) as opened_txt:
+        read_txt: str = opened_txt.read()
+        cinebench_version_raw = findall(cinebench_version_pattern, read_txt)
+        cinebench_version = cinebench_version_raw[0]
+        score_raw = findall(cinebench_score_pattern, read_txt)
+        score = float(score_raw[0])
+        test_type_raw = findall(cinebench_type_pattern, read_txt)
+        test_type = test_type_raw[0]
+        output_list = [cinebench_version, test_type, score]
+        print(output_list)
+        return output_list
+
+
+def parse_text_cdm(input_file_path, encoding='utf16'):
     # Regex expressions for different patterns
     mb_pattern = compile(r'(\d*).(\d*) (?=MB)')
     iops_pattern = compile(r'(\d*).(\d*) (?=IOPS)')
@@ -41,7 +59,7 @@ def parse_text(input_file_path, encoding='utf16'):
     return output_list
 
 
-def new_xlsx(pn_602, pn_700, pn_804, output_file_path=''):
+def new_xlsx(pn_602=[], pn_700=[], pn_804=[], pn_cinebench=[], output_file_path=''):
     dest_filename = 'output.xlsx'
     dest_filepath = output_file_path
     wb = Workbook()
@@ -115,6 +133,10 @@ def new_xlsx(pn_602, pn_700, pn_804, output_file_path=''):
         test[1] = [test[1][i] for i in order_iops]
         test[1] = [float(num) for num in test[1]]
         ws.append(test[2] + test[0] + test[1])
+    ws.append(header_cinebench)
+    ws.append(headers_cinebench)
+    for test in pn_cinebench:
+        ws.append(test)
 
     dims = {}
     for row in ws.rows:
@@ -204,11 +226,12 @@ while True:
             parsed_numbers_602 = []
             parsed_numbers_700 = []
             parsed_numbers_804 = []
+            parsed_numbers_cinebench = []
             for file_path in fpaths:
                 while True:
                     try:
                         # Getting user input for file paths:
-                        parsed = parse_text(file_path)
+                        parsed = parse_text_cdm(file_path)
                         # Checking app version for CDM Reports and appending to respective lists:
                         if parsed[2] == ['6.0.2']:
                             parsed_numbers_602.append(parsed)
@@ -217,8 +240,13 @@ while True:
                         break
                     # For 8.0.4, CDM uses UTF-8 encoding, thus a specific encoding hint for parse_text function.
                     except UnicodeError:
-                        parsed_numbers_804.append(parse_text(file_path, 'utf8'))
-                        break
+                        try:
+                            parsed_numbers_804.append(parse_text_cdm(file_path, 'utf8'))
+                            break
+                        except IndexError:
+                            parsed_numbers_cinebench.append(parse_text_cinebench(file_path, 'utf8'))
+                            break
+
             window['-STATUS1-'].update('Files parsed!')
             window['-STATUS2-'].update('Not created, ready', text_color='#44d62c')
         except NameError:
@@ -229,7 +257,7 @@ while True:
 
     if event == 'Create':
         try:
-            new_xlsx(parsed_numbers_602, parsed_numbers_700, parsed_numbers_804, outputpath)
+            new_xlsx(parsed_numbers_602, parsed_numbers_700, parsed_numbers_804, parsed_numbers_cinebench, outputpath)
             window['-STATUS2-'].update('File created!', text_color='#44d62c')
         except IndexError:
             continue
