@@ -7,7 +7,7 @@
 
 - 🔭 I’m currently working on **Google Solutions Challenge 2023!**
 
-- 🌱 I’m currently learning **Flutter, Firebase**
+- 🌱 I’m currently learning **Web Development, Machine Learning**
 
 - 👯 I’m looking to collaborate on **linkedin :)**
 
