@@ -5,7 +5,7 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=3nityr" alt="3nityr" /></a> </p>
 
-- 🔭 I’m currently working on **Google Solutions Challenge 2023!**
+- 🔭 I’m currently working on **CS50!**
 
 - 🌱 I’m currently learning **Web Development, Machine Learning**
 
