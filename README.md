@@ -14,5 +14,3 @@
 - 📫 How to reach me **xujialu316@gmail.com**
 
 - 📄 Know about my experiences [www.linkedin.com/in/jialu-xu1](www.linkedin.com/in/jialu-xu1)
-
-[![Spotify](https://novatorem.bgstatic.vercel.app/api/spotify)](https://open.spotify.com/artist/6hyCmqlpgEhkMKKr65sFgI)
