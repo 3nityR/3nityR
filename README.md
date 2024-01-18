@@ -5,9 +5,9 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=3nityr&label=Profile%20views&color=0e75b6&style=flat" alt="3nityr" /> </p>
 
-- 🔭 I’m currently working on **actualise, school stuff! (its finals season)**
+- 🔭 I’m currently working on **a landing page for rep, contact me if willing to contribute!**
 
-- 🌱 I’m currently learning **Web Development!**
+- 🌱 I’m currently learning **Swift and SwiftUI :D**
 
 - 👯 I’m looking to collaborate on **linkedin :)**
 
