@@ -15,4 +15,4 @@
 
 - 📄 Know about my experiences **www.linkedin.com/in/jialu-xu1**
 
-- 📝 or visit my blogpost, Actualise **jialu.dev**
+- 📝 or visit my blogpost, Actualise **www.jialu.dev**
